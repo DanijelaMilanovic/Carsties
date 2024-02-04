@@ -12,9 +12,9 @@ public class SearchController : ControllerBase
     {
         var query = DB.PagedSearch<Item, Item>();
 
-        if(!string.IsNullOrEmpty(searchParams.SearchTerms)) 
+        if(!string.IsNullOrEmpty(searchParams.SearchTerm)) 
         {
-            query.Match(Search.Full, searchParams.SearchTerms).SortByTextScore();
+            query.Match(Search.Full, searchParams.SearchTerm).SortByTextScore();
         }
 
         query = searchParams.OrderBy switch 
@@ -49,7 +49,7 @@ public class SearchController : ControllerBase
 
         return Ok (new 
         {
-            result = result.Results,
+            results = result.Results,
             pageCount = result.PageCount,
             totalCount = result.TotalCount
         });
