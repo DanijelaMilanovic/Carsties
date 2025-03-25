@@ -1,8 +1,6 @@
-using System;
+namespace BiddingService;
 
-namespace Contracts;
-
-public class BidPlaced
+public class BidDTO 
 {
     public string Id { get; set; }
     public string AuctionId { get; set; }
